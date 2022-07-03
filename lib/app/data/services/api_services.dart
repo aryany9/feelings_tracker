@@ -14,7 +14,7 @@ class Provider extends GetConnect {
       return Future.error(response.statusText!);
     } else {
       var result = jsonDecode(response.body);
-      debugPrint(result);
+      debugPrint(result.toString());
       return ListOfUserFeelingsModel.fromJson(result);
     }
   }
