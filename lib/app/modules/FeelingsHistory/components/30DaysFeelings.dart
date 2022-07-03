@@ -1,8 +1,6 @@
 import 'package:feelings_tracker/app/modules/FeelingsHistory/controllers/feelings_history_controller.dart';
 import 'package:feelings_tracker/app/modules/FeelingsHistory/widgets/emojibar.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/foundation/key.dart';
-import 'package:flutter/src/widgets/framework.dart';
 import 'package:get/get.dart';
 
 class LastThirtyDaysFeelings extends StatelessWidget {

@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:feelings_tracker/app/data/constants/const.dart';
 import 'package:feelings_tracker/app/modules/FeelingsHistory/models/listOfFeelingsModel.dart';
+import 'package:flutter/foundation.dart';
 import 'package:get/get.dart';
 
 class Provider extends GetConnect {
@@ -13,7 +14,7 @@ class Provider extends GetConnect {
       return Future.error(response.statusText!);
     } else {
       var result = jsonDecode(response.body);
-      print(result);
+      debugPrint(result);
       return ListOfUserFeelingsModel.fromJson(result);
     }
   }

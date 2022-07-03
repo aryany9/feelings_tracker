@@ -1,7 +1,3 @@
-// To parse this JSON data, do
-//
-//     final listOfUserFeelingsModel = listOfUserFeelingsModelFromJson(jsonString);
-
 import 'dart:convert';
 
 ListOfUserFeelingsModel listOfUserFeelingsModelFromJson(String str) =>
@@ -27,7 +23,7 @@ class ListOfUserFeelingsModel {
 
   Map<String, dynamic> toJson() => {
         "status": status,
-        "data": data == null ? null : data?.toJson(),
+        "data": data?.toJson(),
       };
 }
 
@@ -57,8 +53,7 @@ class Data {
       );
 
   Map<String, dynamic> toJson() => {
-        "feeling_percentage":
-            feelingPercentage == null ? null : feelingPercentage?.toJson(),
+        "feeling_percentage": feelingPercentage?.toJson(),
         "feeling_list": feelingList == null
             ? null
             : List<dynamic>.from(feelingList!.map((x) => x.toJson())),
@@ -94,8 +89,7 @@ class FeelingList {
         "user_feeling_id": userFeelingId,
         "feeling_id": feelingId,
         "feeling_name": feelingName,
-        "submit_time":
-            submitTime == null ? null : submitTime?.toIso8601String(),
+        "submit_time": submitTime?.toIso8601String(),
       };
 }
 

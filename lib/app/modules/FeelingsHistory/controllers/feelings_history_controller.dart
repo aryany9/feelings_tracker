@@ -1,6 +1,5 @@
 import 'package:feelings_tracker/app/data/services/api_services.dart';
 import 'package:feelings_tracker/app/modules/FeelingsHistory/models/listOfFeelingsModel.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 
@@ -70,16 +69,6 @@ class FeelingsHistoryController extends GetxController {
     super.onInit();
   }
 
-  @override
-  void onReady() {
-    super.onReady();
-  }
-
-  @override
-  void onClose() {
-    super.onClose();
-  }
-
   void storeDate() {
     dates = <DateTime>[].obs;
     for (int i = 0; i <= 30; i++) {
@@ -103,17 +92,6 @@ class FeelingsHistoryController extends GetxController {
         feelingsHistory.value = feelingsHistory.value;
       }
     }
-
-    // for (int i = 0; i <= feelingsHistory.length; i++) {
-    //   if (feelingsHistory[i].entries.first.value['name'] == feelingName) {
-    //     print(feelingsHistory[i].entries.first.value['percentage']);
-    //     print(feelingsHistory);
-    //     feelingsHistory[i].entries.first.value['percentage'] = percentage;
-    //     print('dividing');
-    //     feelingsHistory = feelingsHistory;
-    //     print(feelingsHistory);
-    //   }
-    // }
   }
 
   Future<void> getListofUserFeeling(String selectedDate) async {

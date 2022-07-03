@@ -19,13 +19,11 @@ class FeelingsBarWidget extends StatelessWidget {
     return Column(
       children: [
         Card(
-          // elevation: 5.0,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(
               50.0,
             ),
           ),
-          // color: itemBackgroundColor,
           child: SizedBox(
             height: 130,
             width: 60,
