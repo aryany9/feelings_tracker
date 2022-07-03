@@ -28,15 +28,14 @@ class SelectedDateHistory extends StatelessWidget {
                 padding: const EdgeInsets.all(5),
 
                 // child: Text("10 Jun, 2021",
-                child: const Text(
-                  // DateFormat('dd MMM, yyyy')
-                  //     .format(controller.selectedDate.value),
-                  '10 Jun, 2021',
-                  style: TextStyle(
-                      color: Colors.black,
-                      fontWeight: FontWeight.w700,
-                      fontSize: 12),
-                ),
+                child: Obx(() => Text(
+                      DateFormat('dd MMM, yyyy')
+                          .format(_controller.selectedDate.value),
+                      style: const TextStyle(
+                          color: Colors.black,
+                          fontWeight: FontWeight.w700,
+                          fontSize: 12),
+                    )),
               ),
               const SizedBox(height: 20),
               Obx(
@@ -48,46 +47,64 @@ class SelectedDateHistory extends StatelessWidget {
                     shrinkWrap: true,
                     itemCount: _controller.dates.length,
                     itemBuilder: (BuildContext context, int index) => InkWell(
-                      onTap: () {},
-                      child: Container(
-                        decoration: BoxDecoration(
-                          color: index == 0
-                              ? const Color(0xFF4F4F4F)
-                              : Colors.transparent,
-                          borderRadius: BorderRadius.circular(13),
-                        ),
-                        width: 55,
-                        alignment: Alignment.center,
-                        child: Column(
-                          // mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            const SizedBox(height: 10),
-                            Text(
-                              DateFormat('EE').format(_controller.dates[index]),
-                              style: const TextStyle(
-                                color: Color(0xFFA7A7A7),
-                                fontSize: 18,
-                              ),
+                      onTap: () {
+                        _controller.selectedDate.value =
+                            _controller.dates[index];
+
+                        _controller.formattedDate.value =
+                            DateFormat('dd-MM-yyyy')
+                                .format(_controller.dates[index]);
+                        _controller.getListofUserFeeling(
+                            _controller.formattedDate.value);
+                      },
+                      child: Obx(() => Container(
+                            decoration: BoxDecoration(
+                              color: DateFormat('dd-MM-yyyy')
+                                          .format(_controller.dates[index])
+                                          .toString() ==
+                                      _controller.formattedDate.value
+                                  ? const Color(0xFF4F4F4F)
+                                  : Colors.transparent,
+                              borderRadius: BorderRadius.circular(13),
                             ),
-                            const SizedBox(height: 10),
-                            Text(
-                              _controller.dates[index].day.toString(),
-                              style: TextStyle(
-                                color: index == 0
-                                    ? const Color(0xFFf1f2f3)
-                                    : const Color(0xFF121212),
-                                fontSize: 18,
-                              ),
+                            width: 55,
+                            alignment: Alignment.center,
+                            child: Column(
+                              // mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                const SizedBox(height: 10),
+                                Text(
+                                  DateFormat('EE')
+                                      .format(_controller.dates[index]),
+                                  style: const TextStyle(
+                                    color: Color(0xFFA7A7A7),
+                                    fontSize: 18,
+                                  ),
+                                ),
+                                const SizedBox(height: 10),
+                                Text(
+                                  _controller.dates[index].day.toString(),
+                                  style: TextStyle(
+                                    color: DateFormat('dd-MM-yyyy')
+                                                .format(
+                                                    _controller.dates[index])
+                                                .toString() ==
+                                            _controller.formattedDate.value
+                                        ? const Color(0xFFf1f2f3)
+                                        : const Color(0xFF121212),
+                                    fontSize: 18,
+                                  ),
+                                ),
+                              ],
                             ),
-                          ],
-                        ),
-                      ),
+                          )),
                     ),
                     separatorBuilder: (BuildContext context, int index) =>
                         const SizedBox(width: 15),
                   ),
                 ),
               ),
+              SizedBox(height: 15),
             ],
           ),
         ),
@@ -101,6 +118,7 @@ class SelectedDateHistory extends StatelessWidget {
             () => _controller.model.value == null
                 ? const SizedBox()
                 : ListView.separated(
+                    physics: const NeverScrollableScrollPhysics(),
                     shrinkWrap: true,
                     itemCount:
                         _controller.model.value!.data!.feelingList!.length,
@@ -122,10 +140,6 @@ class SelectedDateHistory extends StatelessWidget {
                               const SizedBox(
                                 width: 50,
                               ),
-                              // _controller.model.value!.data!
-                              //           .feelingList![index].feelingId?
-                              // _controller.getEmojiWidget(_controller.model
-                              //     .value!.data!.feelingList![index].feelingId!),
                               Image.asset(
                                 _controller.getEmojiPath(_controller
                                     .model
@@ -157,7 +171,7 @@ class SelectedDateHistory extends StatelessWidget {
                       );
                     },
                     separatorBuilder: (BuildContext context, int index) {
-                      return SizedBox(height: 10);
+                      return const SizedBox(height: 10);
                     },
                   ),
           ),

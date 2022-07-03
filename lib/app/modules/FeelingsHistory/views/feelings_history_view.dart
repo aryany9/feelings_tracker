@@ -17,28 +17,31 @@ class FeelingsHistoryView extends GetView<FeelingsHistoryController> {
           title: const Text('Your Feelings History'),
           centerTitle: true,
         ),
-        body: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Padding(
-              padding: const EdgeInsets.all(22.0),
-              child: LastThirtyDaysFeelings(),
-            ),
-            const Divider(
-              color: Colors.black26,
-              thickness: 0.5,
-            ),
-            SelectedDateHistory(),
-            const Divider(
-              color: Colors.black26,
-              thickness: 0.5,
-            ),
-            const Padding(
-              padding: EdgeInsets.all(22.0),
-              child: YouMayFindSomethingInteresting(),
-            )
-          ],
+        body: SingleChildScrollView(
+          scrollDirection: Axis.vertical,
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Padding(
+                padding: const EdgeInsets.all(22.0),
+                child: LastThirtyDaysFeelings(),
+              ),
+              const Divider(
+                color: Colors.black26,
+                thickness: 0.5,
+              ),
+              SelectedDateHistory(),
+              const Divider(
+                color: Colors.black26,
+                thickness: 0.5,
+              ),
+              Padding(
+                padding: EdgeInsets.all(22.0),
+                child: YouMayFindSomethingInteresting(),
+              )
+            ],
+          ),
         )
         // Center(
         //   child: Text(

@@ -57,14 +57,15 @@ class FeelingsHistoryController extends GetxController {
     }
   ].obs;
   RxList<DateTime> dates = RxList<DateTime>();
-  // RxString selectedDate =
-  //     DateFormat('dd-MM-YYYY').format(DateTime.now()).toString().obs;
+  Rx<DateTime> selectedDate = Rx(DateTime.now());
+  RxString formattedDate = DateFormat('dd-MM-yyyy').format(DateTime.now()).obs;
+  RxBool isLoading = true.obs;
   Rxn<ListOfUserFeelingsModel> model = Rxn<ListOfUserFeelingsModel>();
 
   final count = 0.obs;
   @override
   void onInit() {
-    getListofUserFeeling();
+    getListofUserFeeling(selectedDate.toString());
     storeDate();
     super.onInit();
   }
@@ -115,11 +116,15 @@ class FeelingsHistoryController extends GetxController {
     // }
   }
 
-  Future<void> getListofUserFeeling() async {
-    model.value = await Provider().getUserFeelingList('15-04-2022');
+  Future<void> getListofUserFeeling(String selectedDate) async {
+    isLoading(true);
+    print(selectedDate);
+    model.value = null;
+    model.value = await Provider().getUserFeelingList(selectedDate);
     model.value?.data?.feelingPercentage?.toJson().entries.forEach((element) {
       storeEmojiPercentage(feelingName: element.key, percentage: element.value);
     });
+    isLoading(false);
   }
 
   void increment() => count.value++;
