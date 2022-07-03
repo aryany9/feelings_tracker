@@ -17,6 +17,11 @@ class Themes {
           color: Colors.black,
         ),
       ),
+      cardTheme: const CardTheme(
+        shadowColor: Color(0xFFE7E7E8),
+        elevation: 5.0,
+        color: Color(0xFFF1F2F3),
+      ),
       backgroundColor: backgroundColor,
       scaffoldBackgroundColor: backgroundColor,
       primaryColor: accentColor,
@@ -27,6 +32,6 @@ class Themes {
       ));
 }
 
-const backgroundColor = Color(0xFFF2F2F2);
+const backgroundColor = Color(0xFFFBFBFC);
 const itemBackgroundColor = Color(0xFFF1F2F3);
 const accentColor = Color(0xFF85C454);

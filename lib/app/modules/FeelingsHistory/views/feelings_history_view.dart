@@ -1,3 +1,5 @@
+import 'package:feelings_tracker/app/modules/FeelingsHistory/components/30DaysFeelings.dart';
+import 'package:feelings_tracker/app/modules/FeelingsHistory/widgets/emojibar.dart';
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
@@ -9,16 +11,30 @@ class FeelingsHistoryView extends GetView<FeelingsHistoryController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Your Feelings History'),
-        centerTitle: true,
-      ),
-      body: Center(
-        child: Text(
-          'FeelingsHistoryView is working',
-          style: TextStyle(fontSize: 20),
+        appBar: AppBar(
+          title: const Text('Your Feelings History'),
+          centerTitle: true,
         ),
-      ),
-    );
+        body: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Padding(
+              padding: const EdgeInsets.all(22.0),
+              child: LastThirtyDaysFeelings(),
+            ),
+            const Divider(
+              color: Colors.black26,
+              thickness: 0.5,
+            )
+          ],
+        )
+        // Center(
+        //   child: Text(
+        //     'FeelingsHistoryView is working',
+        //     style: TextStyle(fontSize: 20),
+        //   ),
+        // ),
+        );
   }
 }

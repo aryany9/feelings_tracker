@@ -1,5 +1,5 @@
 import 'package:feelings_tracker/app/data/constants/const.dart';
-import 'package:feelings_tracker/app/data/models/ListofUserFeelingsModel.dart';
+import 'package:feelings_tracker/app/modules/FeelingsHistory/models/listOfFeelingsModel.dart';
 import 'package:get/get.dart';
 
 class Provider extends GetConnect {
