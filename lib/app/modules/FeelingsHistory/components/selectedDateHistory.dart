@@ -104,7 +104,7 @@ class SelectedDateHistory extends StatelessWidget {
                   ),
                 ),
               ),
-              SizedBox(height: 15),
+              const SizedBox(height: 15),
             ],
           ),
         ),
@@ -131,11 +131,16 @@ class SelectedDateHistory extends StatelessWidget {
                                 // flex: 5,
                                 width: 90,
                                 alignment: Alignment.center,
-                                child: const Text("9 AM - 12 PM",
-                                    style: TextStyle(
-                                        color: Colors.black,
-                                        fontWeight: FontWeight.w700,
-                                        fontSize: 12)),
+                                child: Text(
+                                    DateFormat('hh:ss a')
+                                        .format(_controller.model.value!.data!
+                                            .feelingList![index].submitTime!)
+                                        .toString(),
+                                    style: const TextStyle(
+                                      color: Colors.black,
+                                      fontWeight: FontWeight.w700,
+                                      fontSize: 14,
+                                    )),
                               ),
                               const SizedBox(
                                 width: 50,
