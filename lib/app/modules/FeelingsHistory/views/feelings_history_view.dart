@@ -1,4 +1,6 @@
 import 'package:feelings_tracker/app/modules/FeelingsHistory/components/30DaysFeelings.dart';
+import 'package:feelings_tracker/app/modules/FeelingsHistory/components/selectedDateHistory.dart';
+import 'package:feelings_tracker/app/modules/FeelingsHistory/components/youMayFindSomethingInteresting.dart';
 import 'package:feelings_tracker/app/modules/FeelingsHistory/widgets/emojibar.dart';
 import 'package:flutter/material.dart';
 
@@ -26,6 +28,15 @@ class FeelingsHistoryView extends GetView<FeelingsHistoryController> {
             const Divider(
               color: Colors.black26,
               thickness: 0.5,
+            ),
+            SelectedDateHistory(),
+            const Divider(
+              color: Colors.black26,
+              thickness: 0.5,
+            ),
+            const Padding(
+              padding: EdgeInsets.all(22.0),
+              child: YouMayFindSomethingInteresting(),
             )
           ],
         )

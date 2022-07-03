@@ -25,23 +25,32 @@ class LastThirtyDaysFeelings extends StatelessWidget {
         const SizedBox(height: 10),
         SizedBox(
           height: 160,
-          child: ListView.separated(
-            scrollDirection: Axis.horizontal,
-            shrinkWrap: true,
-            itemCount: _controller.feelingsHistory.length,
-            itemBuilder: (BuildContext context, int index) {
-              return Opacity(
-                opacity: 0 == 1 ? 0.5 : 1,
-                child: FeelingsBarWidget(
-                  percentage: '30',
-                  emojiPath: _controller.feelingsHistory[index]['emojiPath'],
-                  emojiName: _controller.feelingsHistory[index]['name'],
-                ),
-              );
-            },
-            separatorBuilder: (BuildContext context, int index) {
-              return const SizedBox(width: 15);
-            },
+          child: Obx(
+            () => ListView.separated(
+              scrollDirection: Axis.horizontal,
+              shrinkWrap: true,
+              itemCount: _controller.feelingsHistory.value.length,
+              itemBuilder: (BuildContext context, int index) {
+                return Opacity(
+                  opacity: _controller.feelingsHistory.value[index].entries
+                              .first.value['percentage'] !=
+                          "0"
+                      ? 1
+                      : 0.5,
+                  child: FeelingsBarWidget(
+                    percentage: _controller.feelingsHistory.value[index].entries
+                        .first.value['percentage'],
+                    emojiPath: _controller.feelingsHistory.value[index].entries
+                        .first.value['emojiPath'],
+                    emojiName: _controller.feelingsHistory.value[index].entries
+                        .first.value['name'],
+                  ),
+                );
+              },
+              separatorBuilder: (BuildContext context, int index) {
+                return const SizedBox(width: 15);
+              },
+            ),
           ),
         ),
       ],
