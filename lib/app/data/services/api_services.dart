@@ -1,4 +1,4 @@
-import 'package:feelings_tracker/app/data/const.dart';
+import 'package:feelings_tracker/app/data/constants/const.dart';
 import 'package:feelings_tracker/app/data/models/ListofUserFeelingsModel.dart';
 import 'package:get/get.dart';
 
